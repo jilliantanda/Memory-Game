@@ -1,0 +1,17 @@
+As a player, I want the cards to be black until the game starts.
+
+As a player, I want the first card clicked to stay turned over until I click the next card or until the timer runs out. 
+
+As a player, I want the game to display both cards face up when I find a match. 
+
+As a player, I want cards to turn back over if I select two cards that aren't alike.
+
+As a player, I want the attempts I have remaining to decrease each time I make a complete move. 
+
+As a player, I want a message to display if I select the wrong two cards.
+
+As a player, I want to see how many moves I have made per game so I can beat my previous score.
+
+As a player, I want to be able to select the cards I use. 
+
+As a player, I want the game to end after "x" wrong moves.
