@@ -6,13 +6,31 @@ body {
     align-items: center;
     height: 100vh;
     color: white;
+    font-family: "Play", sans-serif;
 }
 
 header {
     position: static;
     font-size: 60px;
 }
-  
+
+.wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 400px;
+    height: 250px;
+    border-style: ridge;
+    border-color: white;
+    color:black;
+    padding: 10px;
+    background-color: white;
+    visibility: visible;
+}
+
+
 #container {
     position: static;
     top: 0; left:0; right:0; bottom:0; 
@@ -29,23 +47,40 @@ header {
     border-color: aliceblue;
     border-style:dashed;
     border-radius: 20px;
+    visibility: hidden;
 }
 
-.card, .frontCard {
+ .frontCard, .backCard{
     position: relative;
     border-radius: 20px;
     width: 130px; 
-    height: 130px;
+    height: 120px;
     row-gap: 30px;
     column-gap: 30px;
     display: flex;
     flex-direction: row;
     background: linear-gradient(90deg, blue, green);
+
  }
 
-/* 
- .deck1 {
-    /* position: relative;
-    flex-direction: column;
-    flex-wrap: wrap; */
- /* } 
+ /* .card-container {
+    position: relative;
+    width: 6.25em;
+    height: 6.25em;
+    cursor: pointer;
+  } */
+
+ .gameplay{
+    position: static;
+    border-style:outset; 
+    border-color: blue;
+    color: rgb(116, 199, 116);
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    background-color: rgba(158, 138, 138, 0.682);
+ }
+
+
+
+ 
