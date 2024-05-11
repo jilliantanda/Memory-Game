@@ -1,86 +1,140 @@
 body {
-    background-color: green;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: white;
-    font-family: "Play", sans-serif;
+  background-image: url("styling/cloud.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: fit-content;
+  align-items: center;
+  color: white;
+  font-family: "Play", sans-serif;
 }
 
-header {
-    position: static;
-    font-size: 60px;
+
+#game{
+position: static;
+visibility: hidden;
+font-size: 60px;
+color: rgba(0, 0, 255, 0.5);
+}
+
+.choose { 
+    position:fixed;
+    left: 30px;
+    top: 20px
+}
+
+.choose > summary {
+  padding: 4px;
+  width: 100px;
+  background-color: rgba(0, 0, 255, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.choose > p {
+  background-color: #09090956;
+  padding: 10px;
+  margin: 0;
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px 1px#ffffff;
+  cursor: pointer;
 }
 
 .wrapper {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    width: 400px;
-    height: 250px;
-    border-style: ridge;
-    border-color: white;
-    color:black;
-    padding: 10px;
-    background-color: white;
-    visibility: visible;
+  position:fixed;
+  top: 250px;
+  display: grid;
+  grid-template-rows: min-content;
+  row-gap: 0px;
+  width: 400px;
+  height: 220px;
+  border-style: ridge;
+  border-color: white;
+  border-radius: 20px;
+  color: rgb(217, 200, 200);
+  padding: 10px;
+  background-image: url("styling/pond.png");
+  visibility: visible;
 }
 
+.welcome,
+.rules {
+  justify-self: center;
+}
+
+.begin {
+  width: 100px;
+  height: 50px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border-color: rgba(149, 170, 149, 0.724);
+  border-style: inherit;
+  background-color: rgba(114, 185, 114, 0.551);
+}
 
 #container {
-    position: static;
-    top: 0; left:0; right:0; bottom:0; 
-    padding: 30px;
-    margin: 20px;
-    width: 600px;
-    height: 600px;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;   
-    justify-content:space-evenly;
-    background-color: rgba(105, 165, 119, 0.818);
-    border-width: 2px;
-    border-color: aliceblue;
-    border-style:dashed;
-    border-radius: 20px;
-    visibility: hidden;
+  padding: 30px;
+  background-image: url("styling/cloud2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px;
+  width: 630px;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: rgba(105, 165, 119, 0.818);
+  border-width: 2px;
+  border-color: aliceblue;
+  border-style: dashed;
+  border-radius: 20px;
+  visibility: hidden;
 }
 
- .frontCard, .backCard{
+.frontCard {
+  position: relative;
+  border-radius: 20px;
+  width: 130px;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(120deg, rgb(43, 43, 255), rgb(96, 211, 96));
+}
+
+#gameplay {
+  position: fixed;
+  right: 120px;
+  top: 100px;
+  border-style: outset;
+  border-color: blue;
+  color: rgb(116, 199, 116);
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  background-image: url("styling/cloud2.jpeg");
+  visibility: hidden;
+}
+
+.restart{
     position: relative;
+    left: 50px;
+}
+
+.winner {
+    position: absolute;
+    top: 300px;
+    width: 300px;
+    text-align: center;
+    border-style: ridge;
+    border-color: white;
     border-radius: 20px;
-    width: 130px; 
-    height: 120px;
-    row-gap: 30px;
-    column-gap: 30px;
-    display: flex;
-    flex-direction: row;
-    background: linear-gradient(90deg, blue, green);
-
- }
-
- /* .card-container {
-    position: relative;
-    width: 6.25em;
-    height: 6.25em;
-    cursor: pointer;
-  } */
-
- .gameplay{
-    position: static;
-    border-style:outset; 
-    border-color: blue;
-    color: rgb(116, 199, 116);
-    border-radius: 10px;
-    width: 200px;
+    color: rgb(255, 255, 255);
     padding: 10px;
-    background-color: rgba(158, 138, 138, 0.682);
- }
-
-
-
- 
+    background-color: rgb(130, 130, 223);
+    visibility: hidden;
+}

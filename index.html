@@ -14,35 +14,53 @@
 </head>
 
 <body>
-    
-    <div class = "wrapper">
-<p>Welcome.</p>
-<p>Find all matches in less than 20 moves to win.</p>
-<button class= "begin"> Begin! </button>
-</div>
 
-<div class="game">
+
+
+<div id="game">
     <header>
          Predictable Pepe
     </header>
-
 </div>
 
-    <div class="gameplay">
+<div id="gameplay">
+     <p>Attempts remaining: <span id="attemptsLeft">20</span></p>
     <p>Attempts: <span id="attempts">0</span></p>
-    <p>Attempts remaining:<span id="attemptsLeft">20</span></p>
     <p>Wrong Attempts: <span id ="wrongAttempts">0</span></p>
-  </div>
-
-    <div id="container">
+</div>
 
 
+
+<!-- <button class ="restart">Restart</button> -->
+<div id="container"></div>
 
 </div>
 
-<div class ="gameBoard">
-        <button class = "restart">Restart</button>
- </div>
+<div class = "wrapper">
+<p class ="welcome">Welcome.</p>
+<p class ="rules">Find all matches in less than 20 moves to win.</p>
+<button class= "begin"> Begin! </button>
+</div>
+
+<div class ="winner">
+    <p> You won!</p>
+</div>
+<div id ="packs">
+<details class ="choose" id ="choose">
+    <summary>Card packs</summary>
+    <p><img src ="pepe_misc/peepo-kek.png"
+        width="80"
+        height="80"></p>
+    <p><img src ="pepe_love/pepe_cupid.png"
+        width="80"
+        height="80"></p>
+    <p><img src ="traditional_pepes/pepe_happy.png"
+        width="80"
+        height="80"></p>
+    <p><img src ="cute_pepe/pepedrink.png"
+        width="80"
+        height="80"></p>
+</details>
 </div>
 
 </body>

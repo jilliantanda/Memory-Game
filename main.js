@@ -19,7 +19,27 @@ const pack2 = [
   "pepe_love/pepe_chocolateheart.png",
   "pepe_love/heartstruck.png",
 ];
+const pack3 = [
+  "pepe_misc/angery.png",
+  "pepe_misc/feelswowerman.png",
+  "pepe_misc/peepo-blush.png",
+  "pepe_misc/peepo-cringe.png",
+  "pepe_misc/peepo-guns.png",
+  "pepe_misc/peepo-kek.png",
+  "pepe_misc/peepo-thinkpeepothink.png",
+  "pepe_misc/peepo-uwu.png",
+];
 
+const pack4 = [
+  "cute_pepe/pepecomfy.png",
+  "cute_pepe/pepecry.png",
+  "cute_pepe/pepedab.png",
+  "cute_pepe/pepedrink.png",
+  "cute_pepe/pepeknife.png",
+  "cute_pepe/peperage.png",
+  "cute_pepe/pepespeechless.png",
+  "cute_pepe/pepesunglasses.png",
+];
 //   let lose = guesses > maxGuesses
 //   let winner = checkBoardForWinner();
 //   if (winner) return winner;
@@ -41,46 +61,51 @@ function shuffle(arr) {
 let cardsFlipped = [];
 let cardMatches = [];
 
+const gameBoard = document.querySelector("#container");
+const gamePlay = document.querySelector("#gameplay");
+const header = document.querySelector("#game");
+const wrapper = document.querySelector(".wrapper");
+
 function startGame() {
   const button1 = document.querySelector(".begin");
-  const wrapper = document.querySelector(".wrapper")
-  const gameBoard = document.querySelector("#container")
   button1.onclick = () => {
-    console.log("wrapper")
-    wrapper.style.visibility="hidden"
-    gameBoard.style.visibility="visible"
-}
+    console.log("wrapper");
+    wrapper.style.visibility = "hidden";
+    gameBoard.style.visibility = "visible";
+    gamePlay.style.visibility = "visible";
+    header.style.visibility = "visible";
+  };
 }
 
 //   document.querySelector("#game").style.visibility= "visible"
 window.onload = displayCards();
 // function to display images
 function displayCards() {
-  startGame()
+  startGame();
   const container = document.getElementById("container");
-  const duplicates = pack2.concat(pack2);
+  const duplicates = pack3.concat(pack3);
   const shuffled = shuffle(duplicates);
   shuffled.forEach((images, index) => {
     const gameCard = document.createElement("div");
     gameCard.classList.add("card");
     gameCard.dataset.index = index;
-    gameCard.innerHTML += `<div class="frontCard">
+    gameCard.innerHTML += `<div class="frontCard" />
             <img class ="front" src=${images} style="visibility: hidden;" />
         </div>`;
     container.appendChild(gameCard);
-    gameCard.addEventListener("click", () => {
-      if (cardsFlipped.length < 2) {
-        selectCard(gameCard);
-        cardsFlipped.push(gameCard);
-        if (cardsFlipped.length === 2) {
-          setTimeout(checkMatch, 0);
-        }
-      }
-    });
+    gameCard.addEventListener("click", flipped);
   });
 }
 
-
+function flipped(event) {
+  if (cardsFlipped.length < 2) {
+    selectCard(event.target);
+    cardsFlipped.push(event.target);
+    if (cardsFlipped.length === 2) {
+      setTimeout(checkMatch, 0);
+    }
+  }
+}
 // button1.onclick = restart()
 // function to start game
 
@@ -104,14 +129,13 @@ function checkMatch() {
   const secondCard = img2.querySelector(".front");
   if (firstCard.src === secondCard.src) {
     cardMatches.push(img1, img2);
-    console.log("matches");
-  }
-  else if (firstCard !== secondCard) {
+    firstCard.removeEventListener("click", flipped);
+    secondCard.removeEventListener("click", flipped);
+    if (cardMatches.length === pack3.length * 2) 
+    setTimeout(gameWon, 750);
+  } else if (firstCard !== secondCard) {
     setTimeout(wrongMove, 200);
     flipCards(img1, img2);
-  }
-  else if (cardMatches.length === pack2.length) {
-    gameWon();
   }
   return (cardsFlipped = []);
 }
@@ -127,10 +151,20 @@ function flipCards(img1, img2) {
 // function to check if cards match
 
 function gameWon() {
-  const winner = document.createElement("div");
-  winner.classList.add("winner");
-  winner.innerHTML = "You Win!";
-}
+  console.log("you win");
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundImage = "url('styling/fireworks2.gif')"
+  const winner = document.querySelector(".winner");
+  winner.style.visibility = "visible";
+  const choose = document.querySelector(".choose");
+  choose.style.visibility ="hidden";
+  document.querySelectorAll(".front").forEach((element) => 
+  element.style.visibility="hidden")
+  gameBoard.style.visibility = "hidden";
+  gamePlay.style.visibility = "hidden";
+  header.style.visibility = "hidden";
+} 
 
 const gameMoves = {
   attempts: 0,
