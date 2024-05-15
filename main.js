@@ -75,18 +75,20 @@ const wrapper = document.querySelector(".wrapper");
 const details = document.querySelector(".choose");
 const cards = document.querySelectorAll(".cards");
 
-cards.forEach((e) => {
-  clicked = false;
-  e.addEventListener("click", function cardSelect() {
-    cardId = e.id;
+
+function cardSelect(e){
+  cardId = e.target.id;
     const packChoosen = cardPacks[cardId];
     displayCards(packChoosen);
-    console.log(cardId);
-    if (!clicked) {
-      e.removeEventListener("click", cardSelect);
-    }
+    cards.forEach((card) => {
+     card.removeEventListener("click", cardSelect) 
+    })
+}
+
+cards.forEach((card) => {
+  card.addEventListener("click", cardSelect)
   });
-});
+
 
 function startGame() {
   const button1 = document.querySelector(".begin");
@@ -111,7 +113,7 @@ function displayCards(packChoosen) {
             <img class ="front" src=${images} style="visibility: hidden;" />
         </div>`;
     container.appendChild(gameCard);
-    gameCard.addEventListener("click", flipped);  
+    gameCard.addEventListener("click", flipped);
   });
 }
 
@@ -208,12 +210,11 @@ function gameOver() {
   gameOver.style.visibility = "visible";
 }
 
-function reset(){
+function reset() {
   const button2 = document.querySelector("#reset");
   button2.onclick = () => {
-    location.reload()
-  }
+    location.reload();
+  };
 }
 
-reset()
-
+reset();

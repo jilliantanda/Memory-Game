@@ -1,7 +1,6 @@
-# Memory Game Project 1!
+<Predictable Pepe>
 
 # Description
-
 Predictable Pepe is a play on the traditional card flip memory game. The game is a test of memory to remember the placement of cards after flipping one pair at a time. If a pair matches it stays flipped up, if it does not match, you will flip over the pair and try to remember the placement to create pairs with your next turns. 
 
 # How to play
@@ -19,11 +18,18 @@ Predictable Pepe is a play on the traditional card flip memory game. The game is
     -Each time you flip a card upwards, it is important to attempt to remember it's position in the event it is not a pair.
     -In 20 attempts or less, continue turning over cards until the entire board is revealed with its pairs!
 
+# Pictures of Game:
+ game_screenshots/game1.png
+  game_screenshots/game2.png
+  game_screenshots/game3.png
+  game_screenshots/game4.png
+  game_screenshots/game5.png
 
-# Link to deployment
-https://jilliantanda.github.io/Memory-Game/
+# Getting Started
+    https://jilliantanda.github.io/Memory-Game/
+    -Upon loading, select a card pack from the "card packs" menu, and when ready hit "begin".
 
-# Future Features 
+# Next Steps - future enhancements
     -High Scores kept after each win
     -Play again button that will keep previous score
-    -
+    -Card flip animation when selecting a card
