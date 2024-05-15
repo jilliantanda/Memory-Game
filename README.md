@@ -19,7 +19,7 @@ Predictable Pepe is a play on the traditional card flip memory game. The game is
     -In 20 attempts or less, continue turning over cards until the entire board is revealed with its pairs!
 
 # Pictures of Game:
- game_screenshots/game1.png
+  game_screenshots/game1.png
   game_screenshots/game2.png
   game_screenshots/game3.png
   game_screenshots/game4.png
