@@ -19,11 +19,11 @@ Predictable Pepe is a play on the traditional card flip memory game. The game is
     -In 20 attempts or less, continue turning over cards until the entire board is revealed with its pairs!
 
 # Pictures of Game:
-  game_screenshots/game1.png
-  game_screenshots/game2.png
-  game_screenshots/game3.png
-  game_screenshots/game4.png
-  game_screenshots/game5.png
+  ![imageAlt](https://github.com/jilliantanda/Memory-Game/blob/main/game_screenshots/game1.png?raw=true)
+  ![imageAlt](https://github.com/jilliantanda/Memory-Game/blob/main/game_screenshots/game2.png?raw=true)
+  ![imageAlt](https://github.com/jilliantanda/Memory-Game/blob/main/game_screenshots/game3.png?raw=true)
+  ![imageAlt](https://github.com/jilliantanda/Memory-Game/blob/main/game_screenshots/game4.png?raw=true)
+  ![imageAlt](https://github.com/jilliantanda/Memory-Game/blob/main/game_screenshots/game5.png?raw=true)
 
 # Getting Started
     https://jilliantanda.github.io/Memory-Game/
