@@ -1,76 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
     <script defer src="main.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Play:wght@400;700&display=swap');
-        </style>
-        
+      @import url("https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Play:wght@400;700&display=swap");
+    </style>
+
     <title>Predictable</title>
+  </head>
 
-</head>
-
-<body>
-
-
-
-<div id="game">
-    <header>
+  <body>
+    <div id="game">
+      <header>
         <p>Predictable Pepe</p>
-       <img id="stomp" src ="styling/stompy.gif">
+        <img id="stomp" src="styling/stompy.gif" />
+      </header>
+    </div>
 
-    </header>
-</div>
+    <div id="gameplay">
+      <p class="attempts">
+        Attempts remaining: <span id="attemptsLeft">20</span>
+      </p>
+      <p class="attempts">Attempts: <span id="attempts">0</span></p>
+      <p class="attempts">Wrong Attempts: <span id="wrongAttempts">0</span></p>
+      <button class="attempts" id="reset">Reset!</button>
+    </div>
 
-<div id="gameplay">
-     <p class="attempts">Attempts remaining: <span id="attemptsLeft">20</span></p>
-    <p class="attempts">Attempts: <span id="attempts">0</span></p>
-    <p class="attempts">Wrong Attempts: <span id ="wrongAttempts">0</span></p>
-    <button class="attempts" id="restart">Restart!</button>
-</div>
+    <div id="container"></div>
 
+    <div class="wrapper">
+      <p class="rules">Welcome.</p>
+      <p class="rules">Find all matches in less than 20 moves to win.</p>
+      <p class="rules">Select your card pack and click begin!</p>
+      <button class="begin">Begin!</button>
+    </div>
 
-<div id="container"></div>
+    <div class="winner">
+      <p>You won!</p>
+    </div>
 
+    <div class="loser">
+      <p>Game over :(, try again!</p>
+    </div>
 
-<div class = "wrapper">
-<p class ="rules">Welcome.</p>
-<p class ="rules">Find all matches in less than 20 moves to win.</p>
-<p class ="rules">Select your card pack and click begin!</p>
-<button class= "begin"> Begin! </button>
-</div>
-
-<div class ="winner">
-    <p> You won!</p>
-</div>
-
-<div class ="loser">
-    <p> Game over  :(, try again!</p>
-</div>
-
-<div id ="packs">
-<details class ="choose" id ="choose">
-    <summary>Card packs</summary>
-    <p><img src ="traditional_pepes/pepe_happy.png" id="pack1" class="cards"
-        width="80"
-        height="80"></p>
-    <p><img src ="pepe_love/pepe_cupid.png" id="pack2" class="cards"
-        width="80"
-        height="80"></p>
-    <p><img src ="pepe_misc/peepo-kek.png" id="pack3" class="cards"
-        width="80"
-        height="80"></p>
-    <p><img src ="cute_pepe/pepedrink.png" id="pack4" class="cards"
-        width="80"
-        height="80"></p>
-    <p><img src ="pixel_pepe/jedi.gif" id="pack5" class="cards"
-        width="80"
-        height="80"></p>
-</details>
-</div>
-
-</body>
+    <div id="packs">
+      <details class="choose" id="choose">
+        <summary>Card packs</summary>
+        <p>
+          <img
+            src="traditional_pepes/pepe_happy.png"
+            id="pack1"
+            class="cards"
+            width="80"
+            height="80"
+          />
+        </p>
+        <p>
+          <img
+            src="pepe_love/pepe_cupid.png"
+            id="pack2"
+            class="cards"
+            width="80"
+            height="80"
+          />
+        </p>
+        <p>
+          <img
+            src="pepe_misc/peepo-kek.png"
+            id="pack3"
+            class="cards"
+            width="80"
+            height="80"
+          />
+        </p>
+        <p>
+          <img
+            src="cute_pepe/pepedrink.png"
+            id="pack4"
+            class="cards"
+            width="80"
+            height="80"
+          />
+        </p>
+        <p>
+          <img
+            src="pixel_pepe/jedi.gif"
+            id="pack5"
+            class="cards"
+            width="80"
+            height="80"
+          />
+        </p>
+      </details>
+    </div>
+  </body>
 </html>

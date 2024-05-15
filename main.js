@@ -51,7 +51,6 @@ const cardPacks = {
   ],
 };
 
-// function to shuffle cards
 function shuffle(arr) {
   let currentIndex = arr.length;
   while (currentIndex !== 0) {
@@ -89,8 +88,6 @@ cards.forEach((e) => {
   });
 });
 
-
-
 function startGame() {
   const button1 = document.querySelector(".begin");
   button1.onclick = () => {
@@ -102,7 +99,6 @@ function startGame() {
   };
 }
 
-// function to display images
 function displayCards(packChoosen) {
   startGame();
   const container = document.getElementById("container");
@@ -115,7 +111,7 @@ function displayCards(packChoosen) {
             <img class ="front" src=${images} style="visibility: hidden;" />
         </div>`;
     container.appendChild(gameCard);
-    gameCard.addEventListener("click", flipped);
+    gameCard.addEventListener("click", flipped);  
   });
 }
 
@@ -129,22 +125,17 @@ function flipped(event) {
   }
 }
 
-// function to select cards
-
 function selectCard(card) {
   const newImage = card.querySelector(".front");
   newImage.style.visibility = "visible";
 }
 
-// function to flip cards over
 function flipCards(img1, img2) {
   setTimeout(() => {
     img1.querySelector(".front").style.visibility = "hidden";
     img2.querySelector(".front").style.visibility = "hidden";
   }, 500);
 }
-
-// function to check for matches
 
 const gameMoves = {
   attempts: 0,
@@ -160,7 +151,7 @@ function checkMatch() {
     cardMatches.push(img1, img2);
     firstCard.removeEventListener("click", flipped);
     secondCard.removeEventListener("click", flipped);
-    rightMove()
+    rightMove();
     if (cardMatches.length === cardPacks[cardId].length * 2)
       setTimeout(gameWon, 750);
   } else if (firstCard !== secondCard) {
@@ -170,14 +161,10 @@ function checkMatch() {
   return (cardsFlipped = []);
 }
 
+const attemptsNum = document.querySelector("#attempts");
+const attemptsRemainingNum = document.querySelector("#attemptsLeft");
+const wrongAttemptsNum = document.querySelector("#wrongAttempts");
 
-  const attemptsNum = document.querySelector("#attempts");
-  const attemptsRemainingNum = document.querySelector("#attemptsLeft");
-  const wrongAttemptsNum = document.querySelector("#wrongAttempts");
-
-
-
- 
 function wrongMove() {
   gameMoves.attempts++;
   gameMoves.attemptsRemaining--;
@@ -185,8 +172,8 @@ function wrongMove() {
   attemptsNum.innerHTML = gameMoves.attempts;
   attemptsRemainingNum.innerHTML = gameMoves.attemptsRemaining;
   wrongAttemptsNum.innerHTML = gameMoves.wrongAttempts;
-  if (gameMoves.attemptsRemaining <= 0){
-    gameOver()
+  if (gameMoves.attemptsRemaining <= 0) {
+    gameOver();
   }
 }
 
@@ -211,17 +198,22 @@ function gameWon() {
   header.style.visibility = "hidden";
 }
 
-
-
 function gameOver() {
   document
-  .querySelectorAll(".front")
-  .forEach((element) => (element.style.visibility = "hidden"));
-gameBoard.style.visibility = "hidden";
-header.style.visibility = "hidden";
-  const gameOver = document.querySelector(".loser")
+    .querySelectorAll(".front")
+    .forEach((element) => (element.style.visibility = "hidden"));
+  gameBoard.style.visibility = "hidden";
+  header.style.visibility = "hidden";
+  const gameOver = document.querySelector(".loser");
   gameOver.style.visibility = "visible";
 }
 
-// end move upon time limit
-// function to reset game/restart
+function reset(){
+  const button2 = document.querySelector("#reset");
+  button2.onclick = () => {
+    location.reload()
+  }
+}
+
+reset()
+
