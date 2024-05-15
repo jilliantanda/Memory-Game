@@ -3,6 +3,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   max-height: fit-content;
@@ -11,18 +12,18 @@ body {
   font-family: "Play", sans-serif;
 }
 
-
-#game{
-position: static;
-visibility: hidden;
-font-size: 60px;
-color: rgba(0, 0, 255, 0.5);
+#game {
+  position: relative;
+  bottom: 40px;
+  visibility: hidden;
+  font-size: 60px;
+  color: rgba(0, 0, 255, 0.5);
 }
 
-.choose { 
-    position:fixed;
-    left: 30px;
-    top: 20px
+.choose {
+  position: relative;
+  bottom: 250px;
+  right: 300px;
 }
 
 .choose > summary {
@@ -43,8 +44,8 @@ color: rgba(0, 0, 255, 0.5);
 }
 
 .wrapper {
-  position:fixed;
-  top: 250px;
+  position: fixed;
+  top: 200px;
   display: grid;
   grid-template-rows: min-content;
   row-gap: 0px;
@@ -59,14 +60,17 @@ color: rgba(0, 0, 255, 0.5);
   visibility: visible;
 }
 
-.welcome,
 .rules {
   justify-self: center;
+  background-color: rgba(88, 147, 90, 0.911);
+  border-radius: 10px;
+  padding: 5px;
+  color: rgb(255, 255, 255);
 }
 
 .begin {
   width: 100px;
-  height: 50px;
+  height: 45px;
   justify-self: center;
   border-radius: 10px;
   color: white;
@@ -76,6 +80,8 @@ color: rgba(0, 0, 255, 0.5);
 }
 
 #container {
+  position: fixed;
+  bottom: 5px;
   padding: 20px;
   background-image: url("styling/cloud2.jpeg");
   background-repeat: no-repeat;
@@ -106,12 +112,12 @@ color: rgba(0, 0, 255, 0.5);
 }
 
 #gameplay {
-  position: absolute;
-  right: 100px;
-  top: 100px;
-  border-style: outset;
-  border-color: blue;
-  color: rgb(116, 199, 116);
+  position: relative;
+  bottom: 50px;
+  left: 475px;
+  border-style: groove;
+  border-color: rgb(77, 77, 176);
+  color: rgb(255, 255, 255);
   border-radius: 10px;
   width: 200px;
   padding: 10px;
@@ -119,12 +125,37 @@ color: rgba(0, 0, 255, 0.5);
   visibility: hidden;
 }
 
-.restart{
-    position: relative;
-    left: 50px;
+.attempts {
+  background-color: rgba(92, 180, 92, 0.86);
+  width: fit-content;
+  padding: 5px;
+  border-radius: 5px;
+  border-style: groove;
 }
 
+#restart{
+    border-color: white;
+    color: white;
+    position:relative;
+    left: 60px;
+}
+
+
 .winner {
+  position: absolute;
+  top: 300px;
+  width: 300px;
+  text-align: center;
+  border-style: ridge;
+  border-color: white;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  background-color: rgb(130, 130, 223);
+  visibility: hidden;
+}
+
+.loser {
     position: absolute;
     top: 300px;
     width: 300px;
@@ -134,24 +165,24 @@ color: rgba(0, 0, 255, 0.5);
     border-radius: 20px;
     color: rgb(255, 255, 255);
     padding: 10px;
-    background-color: rgb(130, 130, 223);
+    background-color: rgb(55, 97, 188);
     visibility: hidden;
-}
+  }
 
-#stomp{
-    position: absolute;
-    top: 100px;
-    left: 20px;
-    animation: 15s infinite walk ;
+#stomp {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  animation: 15s infinite walk;
 }
 
 @keyframes walk {
-    from {
-      transform: translateX(0);
-      left: 0;
-    }
-    to {
-      left: 100%;
-      transform: translateX(-100%);
-    }
+  from {
+    transform: translateX(0);
+    left: 0;
   }
+  to {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}

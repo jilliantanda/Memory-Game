@@ -1,4 +1,3 @@
-
 const cardPacks = {
   pack1: [
     "traditional_pepes/pepe_troll.png",
@@ -40,9 +39,17 @@ const cardPacks = {
     "cute_pepe/pepespeechless.png",
     "cute_pepe/pepesunglasses.png",
   ],
+  pack5: [
+    "pixel_pepe/2348-pepetriggered.gif",
+    "pixel_pepe/clown.png",
+    "pixel_pepe/fedora.gif",
+    "pixel_pepe/jedi.gif",
+    "pixel_pepe/pirate.gif",
+    "pixel_pepe/popcornpeped.gif",
+    "pixel_pepe/riot.gif",
+    "pixel_pepe/skate.gif",
+  ],
 };
-
-
 
 // function to shuffle cards
 function shuffle(arr) {
@@ -66,19 +73,22 @@ const gameBoard = document.querySelector("#container");
 const gamePlay = document.querySelector("#gameplay");
 const header = document.querySelector("#game");
 const wrapper = document.querySelector(".wrapper");
-const details = document.querySelector(".choose")
-const cards = document.querySelectorAll(".cards")
+const details = document.querySelector(".choose");
+const cards = document.querySelectorAll(".cards");
 
- 
+cards.forEach((e) => {
+  clicked = false;
+  e.addEventListener("click", function cardSelect() {
+    cardId = e.id;
+    const packChoosen = cardPacks[cardId];
+    displayCards(packChoosen);
+    console.log(cardId);
+    if (!clicked) {
+      e.removeEventListener("click", cardSelect);
+    }
+  });
+});
 
-cards.forEach((e) => { 
-     e.addEventListener("click", () => {
-       cardId = e.id
-       const packChoosen = cardPacks[cardId]
-       displayCards(packChoosen);
-       console.log(cardId)
-    })
-    })
 
 
 function startGame() {
@@ -92,31 +102,22 @@ function startGame() {
   };
 }
 
-  
 // function to display images
 function displayCards(packChoosen) {
   startGame();
   const container = document.getElementById("container");
-  const duplicates = packChoosen.concat(packChoosen)
+  const duplicates = packChoosen.concat(packChoosen);
   const shuffled = shuffle(duplicates);
   shuffled.forEach((images, index) => {
     const gameCard = document.createElement("div");
-    gameCard.classList.add("card");
     gameCard.dataset.index = index;
     gameCard.innerHTML += `<div class="frontCard" />
             <img class ="front" src=${images} style="visibility: hidden;" />
         </div>`;
     container.appendChild(gameCard);
     gameCard.addEventListener("click", flipped);
-
-  })
+  });
 }
-
-
-// function choosePack(){
-  
-// }
-
 
 function flipped(event) {
   if (cardsFlipped.length < 2) {
@@ -128,12 +129,6 @@ function flipped(event) {
   }
 }
 
-
-function restart(arr) {
-  shuffle(arr);
-  displayCards();
-}
-
 // function to select cards
 
 function selectCard(card) {
@@ -141,7 +136,21 @@ function selectCard(card) {
   newImage.style.visibility = "visible";
 }
 
+// function to flip cards over
+function flipCards(img1, img2) {
+  setTimeout(() => {
+    img1.querySelector(".front").style.visibility = "hidden";
+    img2.querySelector(".front").style.visibility = "hidden";
+  }, 500);
+}
+
 // function to check for matches
+
+const gameMoves = {
+  attempts: 0,
+  attemptsRemaining: 20,
+  wrongAttempts: 0,
+};
 
 function checkMatch() {
   const [img1, img2] = cardsFlipped;
@@ -151,35 +160,49 @@ function checkMatch() {
     cardMatches.push(img1, img2);
     firstCard.removeEventListener("click", flipped);
     secondCard.removeEventListener("click", flipped);
-    // if (cardMatches.length === cardPacks.pack4.length * 2) setTimeout(gameWon, 750);
+    rightMove()
     if (cardMatches.length === cardPacks[cardId].length * 2)
       setTimeout(gameWon, 750);
   } else if (firstCard !== secondCard) {
-    setTimeout(wrongMove, 200);
+    setTimeout(wrongMove(), 200);
     flipCards(img1, img2);
   }
   return (cardsFlipped = []);
 }
-// function to flip cards over
-function flipCards(img1, img2) {
-  setTimeout(() => {
-    img1.querySelector(".front").style.visibility = "hidden";
-    img2.querySelector(".front").style.visibility = "hidden";
-  }, 500);
+
+
+  const attemptsNum = document.querySelector("#attempts");
+  const attemptsRemainingNum = document.querySelector("#attemptsLeft");
+  const wrongAttemptsNum = document.querySelector("#wrongAttempts");
+
+
+
+ 
+function wrongMove() {
+  gameMoves.attempts++;
+  gameMoves.attemptsRemaining--;
+  gameMoves.wrongAttempts++;
+  attemptsNum.innerHTML = gameMoves.attempts;
+  attemptsRemainingNum.innerHTML = gameMoves.attemptsRemaining;
+  wrongAttemptsNum.innerHTML = gameMoves.wrongAttempts;
+  if (gameMoves.attemptsRemaining <= 0){
+    gameOver()
+  }
 }
 
-//first click must match second click
-// function to check if cards match
+function rightMove() {
+  gameMoves.attempts++;
+  gameMoves.attemptsRemaining--;
+  attemptsNum.innerHTML = gameMoves.attempts;
+  attemptsRemainingNum.innerHTML = gameMoves.attemptsRemaining;
+}
 
 function gameWon() {
-  console.log("you win");
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
   document.body.style.backgroundImage = "url('styling/fireworks2.gif')";
   const winner = document.querySelector(".winner");
   winner.style.visibility = "visible";
-  const choose = document.querySelector(".choose");
-  choose.style.visibility = "hidden";
   document
     .querySelectorAll(".front")
     .forEach((element) => (element.style.visibility = "hidden"));
@@ -188,22 +211,16 @@ function gameWon() {
   header.style.visibility = "hidden";
 }
 
-const gameMoves = {
-  attempts: 0,
-  attemptsRemaining: 20,
-  wrongAttempts: 0,
-};
-// function to generate wrong move
-function wrongMove() {
-  const attemptsNum = document.querySelector("#attempts");
-  const attemptsRemainingNum = document.querySelector("#attemptsLeft");
-  const wrongAttemptsNum = document.querySelector("#wrongAttempts");
-  gameMoves.attempts++;
-  gameMoves.attemptsRemaining--;
-  gameMoves.wrongAttempts++;
-  attemptsNum.innerHTML = gameMoves.attempts;
-  attemptsRemainingNum.innerHTML = gameMoves.attemptsRemaining;
-  wrongAttemptsNum.innerHTML = gameMoves.wrongAttempts;
+
+
+function gameOver() {
+  document
+  .querySelectorAll(".front")
+  .forEach((element) => (element.style.visibility = "hidden"));
+gameBoard.style.visibility = "hidden";
+header.style.visibility = "hidden";
+  const gameOver = document.querySelector(".loser")
+  gameOver.style.visibility = "visible";
 }
 
 // end move upon time limit

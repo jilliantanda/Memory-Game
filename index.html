@@ -26,24 +26,31 @@
 </div>
 
 <div id="gameplay">
-     <p>Attempts remaining: <span id="attemptsLeft">20</span></p>
-    <p>Attempts: <span id="attempts">0</span></p>
-    <p>Wrong Attempts: <span id ="wrongAttempts">0</span></p>
+     <p class="attempts">Attempts remaining: <span id="attemptsLeft">20</span></p>
+    <p class="attempts">Attempts: <span id="attempts">0</span></p>
+    <p class="attempts">Wrong Attempts: <span id ="wrongAttempts">0</span></p>
+    <button class="attempts" id="restart">Restart!</button>
 </div>
 
-<!-- <button class ="restart">Restart</button> -->
+
 <div id="container"></div>
 
 
 <div class = "wrapper">
-<p class ="welcome">Welcome.</p>
+<p class ="rules">Welcome.</p>
 <p class ="rules">Find all matches in less than 20 moves to win.</p>
+<p class ="rules">Select your card pack and click begin!</p>
 <button class= "begin"> Begin! </button>
 </div>
 
 <div class ="winner">
     <p> You won!</p>
 </div>
+
+<div class ="loser">
+    <p> Game over  :(, try again!</p>
+</div>
+
 <div id ="packs">
 <details class ="choose" id ="choose">
     <summary>Card packs</summary>
@@ -57,6 +64,9 @@
         width="80"
         height="80"></p>
     <p><img src ="cute_pepe/pepedrink.png" id="pack4" class="cards"
+        width="80"
+        height="80"></p>
+    <p><img src ="pixel_pepe/jedi.gif" id="pack5" class="cards"
         width="80"
         height="80"></p>
 </details>
