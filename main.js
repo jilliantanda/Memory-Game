@@ -1,48 +1,48 @@
-const pack1 = [
-  "traditional_pepes/pepe_troll.png",
-  "traditional_pepes/pepe_sweat.png",
-  "traditional_pepes/pepe_smart.png",
-  "traditional_pepes/pepe_popcorn.png",
-  "traditional_pepes/pepe_oof.png",
-  "traditional_pepes/pepe_happy.png",
-  "traditional_pepes/pepe_crying.png",
-  "traditional_pepes/pepe_angry.png",
-];
 
-const pack2 = [
-  "pepe_love/pepe-love.png",
-  "pepe_love/pepe_rose.png",
-  "pepe_love/pepe_ribbon.png",
-  "pepe_love/pepe_hearteyes.png",
-  "pepe_love/pepe_giftheart.png",
-  "pepe_love/pepe_cupid.png",
-  "pepe_love/pepe_chocolateheart.png",
-  "pepe_love/heartstruck.png",
-];
-const pack3 = [
-  "pepe_misc/angery.png",
-  "pepe_misc/feelswowerman.png",
-  "pepe_misc/peepo-blush.png",
-  "pepe_misc/peepo-cringe.png",
-  "pepe_misc/peepo-guns.png",
-  "pepe_misc/peepo-kek.png",
-  "pepe_misc/peepo-thinkpeepothink.png",
-  "pepe_misc/peepo-uwu.png",
-];
+const cardPacks = {
+  pack1: [
+    "traditional_pepes/pepe_troll.png",
+    "traditional_pepes/pepe_sweat.png",
+    "traditional_pepes/pepe_smart.png",
+    "traditional_pepes/pepe_popcorn.png",
+    "traditional_pepes/pepe_oof.png",
+    "traditional_pepes/pepe_happy.png",
+    "traditional_pepes/pepe_crying.png",
+    "traditional_pepes/pepe_angry.png",
+  ],
+  pack2: [
+    "pepe_love/pepe-love.png",
+    "pepe_love/pepe_rose.png",
+    "pepe_love/pepe_ribbon.png",
+    "pepe_love/pepe_hearteyes.png",
+    "pepe_love/pepe_giftheart.png",
+    "pepe_love/pepe_cupid.png",
+    "pepe_love/pepe_chocolateheart.png",
+    "pepe_love/heartstruck.png",
+  ],
+  pack3: [
+    "pepe_misc/angery.png",
+    "pepe_misc/feelswowerman.png",
+    "pepe_misc/peepo-blush.png",
+    "pepe_misc/peepo-cringe.png",
+    "pepe_misc/peepo-guns.png",
+    "pepe_misc/peepo-kek.png",
+    "pepe_misc/peepo-thinkpeepothink.png",
+    "pepe_misc/peepo-uwu.png",
+  ],
+  pack4: [
+    "cute_pepe/pepecomfy.png",
+    "cute_pepe/pepecry.png",
+    "cute_pepe/pepedab.png",
+    "cute_pepe/pepedrink.png",
+    "cute_pepe/pepeknife.png",
+    "cute_pepe/peperage.png",
+    "cute_pepe/pepespeechless.png",
+    "cute_pepe/pepesunglasses.png",
+  ],
+};
 
-const pack4 = [
-  "cute_pepe/pepecomfy.png",
-  "cute_pepe/pepecry.png",
-  "cute_pepe/pepedab.png",
-  "cute_pepe/pepedrink.png",
-  "cute_pepe/pepeknife.png",
-  "cute_pepe/peperage.png",
-  "cute_pepe/pepespeechless.png",
-  "cute_pepe/pepesunglasses.png",
-];
-//   let lose = guesses > maxGuesses
-//   let winner = checkBoardForWinner();
-//   if (winner) return winner;
+
 
 // function to shuffle cards
 function shuffle(arr) {
@@ -58,6 +58,7 @@ function shuffle(arr) {
   return arr;
 }
 
+let cardId;
 let cardsFlipped = [];
 let cardMatches = [];
 
@@ -65,25 +66,38 @@ const gameBoard = document.querySelector("#container");
 const gamePlay = document.querySelector("#gameplay");
 const header = document.querySelector("#game");
 const wrapper = document.querySelector(".wrapper");
+const details = document.querySelector(".choose")
+const cards = document.querySelectorAll(".cards")
+
+ 
+
+cards.forEach((e) => { 
+     e.addEventListener("click", () => {
+       cardId = e.id
+       const packChoosen = cardPacks[cardId]
+       displayCards(packChoosen);
+       console.log(cardId)
+    })
+    })
+
 
 function startGame() {
   const button1 = document.querySelector(".begin");
   button1.onclick = () => {
-    console.log("wrapper");
     wrapper.style.visibility = "hidden";
     gameBoard.style.visibility = "visible";
     gamePlay.style.visibility = "visible";
     header.style.visibility = "visible";
+    details.style.visibility = "hidden";
   };
 }
 
-//   document.querySelector("#game").style.visibility= "visible"
-window.onload = displayCards();
+  
 // function to display images
-function displayCards() {
+function displayCards(packChoosen) {
   startGame();
   const container = document.getElementById("container");
-  const duplicates = pack3.concat(pack3);
+  const duplicates = packChoosen.concat(packChoosen)
   const shuffled = shuffle(duplicates);
   shuffled.forEach((images, index) => {
     const gameCard = document.createElement("div");
@@ -94,8 +108,15 @@ function displayCards() {
         </div>`;
     container.appendChild(gameCard);
     gameCard.addEventListener("click", flipped);
-  });
+
+  })
 }
+
+
+// function choosePack(){
+  
+// }
+
 
 function flipped(event) {
   if (cardsFlipped.length < 2) {
@@ -106,8 +127,7 @@ function flipped(event) {
     }
   }
 }
-// button1.onclick = restart()
-// function to start game
+
 
 function restart(arr) {
   shuffle(arr);
@@ -131,8 +151,9 @@ function checkMatch() {
     cardMatches.push(img1, img2);
     firstCard.removeEventListener("click", flipped);
     secondCard.removeEventListener("click", flipped);
-    if (cardMatches.length === pack3.length * 2) 
-    setTimeout(gameWon, 750);
+    // if (cardMatches.length === cardPacks.pack4.length * 2) setTimeout(gameWon, 750);
+    if (cardMatches.length === cardPacks[cardId].length * 2)
+      setTimeout(gameWon, 750);
   } else if (firstCard !== secondCard) {
     setTimeout(wrongMove, 200);
     flipCards(img1, img2);
@@ -154,17 +175,18 @@ function gameWon() {
   console.log("you win");
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundImage = "url('styling/fireworks2.gif')"
+  document.body.style.backgroundImage = "url('styling/fireworks2.gif')";
   const winner = document.querySelector(".winner");
   winner.style.visibility = "visible";
   const choose = document.querySelector(".choose");
-  choose.style.visibility ="hidden";
-  document.querySelectorAll(".front").forEach((element) => 
-  element.style.visibility="hidden")
+  choose.style.visibility = "hidden";
+  document
+    .querySelectorAll(".front")
+    .forEach((element) => (element.style.visibility = "hidden"));
   gameBoard.style.visibility = "hidden";
   gamePlay.style.visibility = "hidden";
   header.style.visibility = "hidden";
-} 
+}
 
 const gameMoves = {
   attempts: 0,
