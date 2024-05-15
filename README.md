@@ -1,4 +1,4 @@
-<Predictable Pepe>
+# Predictable Pepe
 
 # Description
 Predictable Pepe is a play on the traditional card flip memory game. The game is a test of memory to remember the placement of cards after flipping one pair at a time. If a pair matches it stays flipped up, if it does not match, you will flip over the pair and try to remember the placement to create pairs with your next turns. 
